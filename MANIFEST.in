@@ -1,0 +1,1 @@
+include berlin/lod/basetheme/templates/*.html.jinja
