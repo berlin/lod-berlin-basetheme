@@ -1,1 +1,3 @@
 include berlin/lod/basetheme/templates/*.html.jinja
+include berlin/lod/basetheme/assets/*.css
+include berlin/lod/basetheme/assets/*.js
