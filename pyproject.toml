@@ -9,3 +9,7 @@ description = "A set of base Jinja templates for static LOD sites"
 authors = [{ name = "Knud Möller", email = "knud.moeller@berlinonline.de" }]
 license = { file = "LICENSE" }
 readme = "README.md"
+
+[project.urls]
+Homepage = "https://github.com/berlin/lod-berlin-base-templates"
+Issues = "https://github.com/berlin/lod-berlin-base-templates/issues"
