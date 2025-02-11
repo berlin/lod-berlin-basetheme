@@ -7,6 +7,5 @@ name = "lod-berlin-base-templates"
 version = "0.0.1"
 description = "A set of base Jinja templates for static LOD sites"
 authors = [{ name = "Knud Möller", email = "knud.moeller@berlinonline.de" }]
-license = "MIT"
-license-files = [ "LICENSE" ]
+license = { file = "LICENSE" }
 readme = "README.md"
