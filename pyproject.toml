@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "lod-berlin-basetheme"
 version = "0.0.1"
-description = "A set of base Jinja templates for static LOD sites"
+description = "A set of base Jinja templates for generating LOD websites"
 authors = [{ name = "Knud Möller", email = "knud.moeller@berlinonline.de" }]
 license = { file = "LICENSE" }
 readme = "README.md"
