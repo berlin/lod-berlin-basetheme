@@ -69,9 +69,15 @@
       <td>Beispielressource:</td>
       <td>
         {{ helper.prefix_link(resource) }}
-        {% set resource_type = resource | rdf_property_any(RDF.type) %}
-        {% if resource_type %}
-          ({{ helper.prefix_link(resource_type) }})
+        {% set resource_types = resource | rdf_property(RDF.type) %}
+        {% if resource_types %}
+          (
+            {% for type in resource_types %}
+              {{ helper.prefix_link(type) }}
+              {% if not loop.last %},
+              {% endif %}
+            {% endfor %}
+          )
         {% endif %}
       </td>
     </tr>
