@@ -63,7 +63,7 @@
     </tr>
   {% endif %}
 
-  {% set example_resources = node | rdf_property(VOID.exampleResource) %}
+  {% set example_resources = node | rdf_property(VOID.exampleResource) | sort %}
   {% for resource in example_resources %}
     <tr>
       <td>Beispielressource:</td>
