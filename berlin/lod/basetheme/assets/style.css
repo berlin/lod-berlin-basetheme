@@ -102,3 +102,9 @@ body .container {
 .imprint-block {
     margin-bottom: 30px;
 }
+
+/* Cards */
+
+.card-header h2, .card-header p {
+    margin-bottom: 0px;
+}
