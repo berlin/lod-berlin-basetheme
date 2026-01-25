@@ -71,6 +71,28 @@
     {% endif %}
   {% endblock dataset_homepage %}
 
+  {% block dataset_root_resource %}
+    {% set root_resource = node | rdf_property_any(VOID.rootResource) %}
+    {% if root_resource %}
+      <tr>
+        <td>Einstiegsressource:</td>
+        <td>
+          {{ helper.prefix_link(root_resource) }}
+          {% set resource_types = root_resource | rdf_property(RDF.type) %}
+          {% if resource_types %}
+            (
+              {% for type in resource_types %}
+                {{ helper.prefix_link(type) }}
+                {% if not loop.last %},
+                {% endif %}
+              {% endfor %}
+            )
+          {% endif %}
+        </td>
+      </tr>
+    {% endif %}
+  {% endblock dataset_root_resource %}
+
   {% block dataset_example_resources %}
     {% set example_resources = node | rdf_property(VOID.exampleResource) | sort %}
     {% for resource in example_resources %}
@@ -92,16 +114,6 @@
       </tr>
     {% endfor %}
   {% endblock dataset_example_resources %}
-
-  {% block dataset_root_resource %}
-    {% set root_resource = node | rdf_property_any(VOID.rootResource) %}
-    {% if root_resource %}
-      <tr>
-        <td>Einstiegsressource:</td>
-        <td>{{ helper.prefix_link(root_resource) }}</td>
-      </tr>
-    {% endif %}
-  {% endblock dataset_root_resource %}
 
   {% block dataset_vocabs %}
     {% set vocabs = node | rdf_property(VOID.vocabulary) %}
@@ -148,5 +160,24 @@
       </tr>
     {% endfor %}
   {% endblock dataset_licenses %}
+
+  {% block sources %}
+    {%  set sources_query = '''
+      SELECT ?source
+      WHERE {
+        ?resourceUri
+        prov:wasGeneratedBy/prov:used ?source ;
+      } ORDER BY ?source
+    ''' %}
+    {% set results = node | sparql_query(sources_query) %}
+    {% if results %}
+      {% for result in results %}
+        <tr>
+          <td>Quelle:</td>
+          <td>{{ helper.prefix_link(result['source']) }}</td>
+        </tr>
+      {% endfor %}
+    {% endif %}
+  {% endblock sources %}
 
 {% endblock info_table_content %}
