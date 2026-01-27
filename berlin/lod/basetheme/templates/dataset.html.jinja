@@ -48,7 +48,7 @@
       <tr>
         <td>Veröffentlichende Stelle:</td>
         <td>
-          <a href="{{ publisher }}">
+          <a href="{{ publisher | relative_uri }}">
             {% set publisher_local_name = helper.prefix_label(publisher) %}
             {{ publisher | title_any(['de', 'en'], publisher_local_name) }}
           </a>
